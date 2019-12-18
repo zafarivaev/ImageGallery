@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "info", style: .done, target: self, action: #selector(info))
   }
   
-  func info() {
+  @objc func info() {
     let alertController = UIAlertController(title: "Info", message: "Public Domain images by NASA", preferredStyle: .alert)
     alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
     present(alertController, animated: true, completion: nil)
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
                 UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseIn, animations: {
                     image.layer.transform = CATransform3DIdentity
                 }, completion: { _ in
-                    self.view.bringSubview(toFront: image)
+                    self.view.bringSubviewToFront(image)
                 })
             } else {
                 UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseIn, animations: {
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
     
     if isGalleryOpen {
         for subview in view.subviews {
-            guard let image = subview as? ImageViewCard else {
+            guard subview is ImageViewCard else {
                 continue
             }
             UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseOut, animations: {

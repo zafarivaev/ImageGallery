@@ -24,10 +24,10 @@ class ImageViewCard: UIImageView {
   override func didMoveToSuperview() {
     isUserInteractionEnabled = true
     addGestureRecognizer(UITapGestureRecognizer(target: self,
-      action: #selector(ImageViewCard.didTapHandler(_:))))
+      action: #selector(didTapHandler)))
   }
   
-  func didTapHandler(_ tap: UITapGestureRecognizer) {
+  @objc func didTapHandler(_ tap: UITapGestureRecognizer) {
     didSelect?(self)
   }
 }
